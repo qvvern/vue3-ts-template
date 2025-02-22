@@ -1,0 +1,23 @@
+@mixin light-mode {
+	--background-color: #fff;
+	--border-color: rgb(236, 236, 236);
+	--text-color: #121213;
+	--hover-color: #f5f5f5;
+	--selected-background-color: #ececec;
+}
+
+@mixin dark-mode {
+	--background-color: #000;
+	--border-color: rgb(54, 54, 54);
+	--text-color: #f0f0f0;
+	--hover-color: #1a1a1a;
+	--selected-background-color: #111111;
+}
+
+:root {
+	@include light-mode;
+
+	&.dark {
+		@include dark-mode;
+	}
+}
