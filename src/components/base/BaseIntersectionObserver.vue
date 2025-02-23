@@ -1,6 +1,5 @@
 <script setup lang="ts">
 import { useIntersectionObserver } from '@vueuse/core';
-import { shallowRef, useTemplateRef } from 'vue';
 
 const emit = defineEmits(['intersecting']);
 const root = ref(null);
@@ -20,6 +19,7 @@ watch(
     (intersecting) => {
         emit('intersecting', intersecting);
     },
+    { immediate: true },
 );
 </script>
 

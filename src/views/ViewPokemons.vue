@@ -1,32 +1,6 @@
 <script setup lang="ts">
-import { usePokemonStore } from '@/stores/pokemonStore';
 import PokemonsTable from '@/components/pokemons/PokemonsTable.vue';
-import BaseSpinner from '@/components/base/BaseSpinner.vue';
 import BaseDarkToggleButton from '@/components/base/BaseDarkToggleButton.vue';
-
-const pokemonStore = usePokemonStore();
-const isPageLoading = ref(true);
-const failedToLoadPage = ref(false);
-const total = ref<number>(0);
-
-onMounted(async () => {
-    await loadPokemonsAsync();
-});
-
-async function loadPokemonsAsync(): Promise<void> {
-    isPageLoading.value = true;
-    await pokemonStore
-        .fetchPokemonsAsync()
-        .then((response) => {
-            total.value = response.count;
-        })
-        .finally(() => {
-            isPageLoading.value = false;
-        })
-        .catch(() => {
-            failedToLoadPage.value = true;
-        });
-}
 </script>
 
 <template>
@@ -41,13 +15,7 @@ async function loadPokemonsAsync(): Promise<void> {
                 <BaseDarkToggleButton />
             </div>
             <div class="w-full">
-                <div v-if="isPageLoading" class="w-full h-full flex justify-center">
-                    <BaseSpinner class="self-center" />
-                </div>
-                <div v-if="failedToLoadPage" class="w-full h-full flex justify-center">
-                    <div class="self-center">Sorry, something went wrong.</div>
-                </div>
-                <PokemonsTable v-else :total="total" />
+                <PokemonsTable />
             </div>
         </div>
     </section>
