@@ -8,21 +8,21 @@ const intersector = useTemplateRef<HTMLElement>('intersector');
 const isVisible = shallowRef(false);
 
 useIntersectionObserver(
-	intersector,
-	([entry]) => {
-		isVisible.value = entry?.isIntersecting || false;
-	},
-	{ root },
+    intersector,
+    ([entry]) => {
+        isVisible.value = entry?.isIntersecting || false;
+    },
+    { root },
 );
 
 watch(
-	() => isVisible.value,
-	(intersecting) => {
-		emit('intersecting', intersecting);
-	},
+    () => isVisible.value,
+    (intersecting) => {
+        emit('intersecting', intersecting);
+    },
 );
 </script>
 
 <template>
-	<div ref="intersector"></div>
+    <div ref="intersector"></div>
 </template>

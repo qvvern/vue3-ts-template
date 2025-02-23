@@ -2,6 +2,7 @@
   "recommendations": [
     "Vue.volar", // Vue - Official
     "dbaeumer.vscode-eslint", // eslint,
-    "esbenp.prettier-vscode" // prettier
+    "esbenp.prettier-vscode", // prettier
+    "bradlc.vscode-tailwindcss" // tailwindcss
   ]
 }

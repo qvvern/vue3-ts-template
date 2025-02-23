@@ -1,5 +1,5 @@
 export const ROUTE = Object.freeze({
-	NAME: {
-		POKEMONS: 'Pokemons',
-	}
+    NAME: {
+        POKEMONS: 'Pokemons',
+    },
 });

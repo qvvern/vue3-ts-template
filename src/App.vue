@@ -5,6 +5,6 @@ const route = useRoute();
 </script>
 
 <template>
-	<notifications position="top center" />
-	<router-view v-bind="{ ...route.params, ...route.query }" />
+    <notifications position="top center" />
+    <router-view v-bind="{ ...route.params, ...route.query }" />
 </template>
