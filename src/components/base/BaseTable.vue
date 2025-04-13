@@ -1,6 +1,6 @@
 <script setup lang="ts">
 import type { BaseTableColumn } from '@/types/BaseTableColumn';
-import _ from 'lodash';
+import { isEqual, cloneDeep } from 'lodash-es';
 import BaseSpinner from '@/components/base/BaseSpinner.vue';
 
 const emit = defineEmits(['rowClicked', 'rowCtrlClicked']);
@@ -21,10 +21,10 @@ function selectRow(row: Record<string, unknown>, isCtrl?: boolean): void {
     }
     emit('rowClicked', row);
 
-    if (_.isEqual(selectedRowVModel.value, row)) {
+    if (isEqual(selectedRowVModel.value, row)) {
         selectedRowVModel.value = null;
     } else {
-        selectedRowVModel.value = _.cloneDeep(row);
+        selectedRowVModel.value = cloneDeep(row);
     }
 }
 </script>
@@ -42,7 +42,7 @@ function selectRow(row: Record<string, unknown>, isCtrl?: boolean): void {
             <tr
                 v-for="(row, index) in rows"
                 :key="index"
-                :class="{ selected: _.isEqual(selectedRowVModel, row) }"
+                :class="{ selected: isEqual(selectedRowVModel, row) }"
                 @mouseover="hoveredRowIndex = index"
                 @mouseleave="hoveredRowIndex = null"
                 @focusin="hoveredRowIndex = index"

@@ -11,7 +11,7 @@ import stylistic from '@stylistic/eslint-plugin';
 
 export default tseslint.config(
     {
-        ignores: ['tsconfig.json', 'vite.config.ts', 'eslint.config.ts'],
+        ignores: ['tsconfig.json', 'vite.config.ts', 'eslint.config.js'],
         extends: [
             eslint.configs.recommended,
             eslintPluginImportX.flatConfigs.recommended,
